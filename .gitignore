@@ -1,5 +1,5 @@
 .idea
 .gradle
 build
-!database/.gitkeep
 database/*
+!database/.gitkeep
