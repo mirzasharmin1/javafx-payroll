@@ -1,0 +1,1 @@
+INSERT INTO payrolldb.user (id, name) VALUES (1, 'Mirza Sharmin');
