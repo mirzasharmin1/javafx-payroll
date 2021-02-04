@@ -5,7 +5,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "leave")
-public class Leave {
+public class Leave extends BaseModel {
 
     @Id
     private int id;

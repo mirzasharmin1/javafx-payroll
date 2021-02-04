@@ -5,7 +5,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "payroll")
-public class Payroll {
+public class Payroll extends BaseModel {
 
     @Id
     private int id;

@@ -6,7 +6,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "employee")
-public class Employee {
+public class Employee extends BaseModel {
     @Id
     private int id;
 
