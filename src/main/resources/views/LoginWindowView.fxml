@@ -33,6 +33,6 @@
             </HBox>
          </children>
       </GridPane>
-      <Label layoutX="419.0" layoutY="200.0" prefHeight="0.0" prefWidth="63.0" style="-fx-font-size: 22;" text="Sign In" />
+      <Label layoutX="419.0" layoutY="171.0" prefHeight="0.0" prefWidth="63.0" style="-fx-font-size: 22;" text="Sign In" />
    </children>
 </AnchorPane>
