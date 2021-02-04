@@ -1,17 +1,11 @@
 package com.programming2.payroll;
 
 import com.programming2.payroll.controllers.LoginWindowController;
-import com.programming2.payroll.models.User;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
-
-import java.util.List;
 
 public class Main extends Application {
     private Stage primaryStage;

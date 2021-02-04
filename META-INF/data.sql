@@ -1,1 +1,1 @@
-INSERT INTO payrolldb.user (id, name) VALUES (1, 'Mirza Sharmin');
+INSERT INTO payrolldb.user (id, username, password, name, email) VALUES(1, 'sharmin', '12345678', 'Mirza Sharmin', 'mirza.sharmin1@gmail.com');
