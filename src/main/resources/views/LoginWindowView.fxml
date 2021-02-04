@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import com.programming2.payroll.controls.*?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programming2.payroll.controllers.LoginWindowController">
    <children>
@@ -20,13 +19,13 @@
          <children>
             <Label text="Username" GridPane.columnSpan="2" />
             <Label text="Password" GridPane.rowIndex="1" />
-            <NonEmptyTextField id="usernameInput" GridPane.columnIndex="1" />
+            <TextField id="usernameInput" fx:id="usernameInput" GridPane.columnIndex="1" />
             <HBox alignment="CENTER" prefHeight="30.0" prefWidth="400.0" GridPane.columnSpan="2" GridPane.rowIndex="3">
                <children>
                   <Button id="signinButton" mnemonicParsing="false" text="Sign In" />
                </children>
             </HBox>
-            <NonEmptyPasswordField id="passwordInput" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <PasswordField id="passwordInput" fx:id="passwordInput" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <HBox alignment="CENTER" prefHeight="12.0" prefWidth="400.0" GridPane.columnSpan="2" GridPane.rowIndex="2">
                <children>
                   <Label id="errorLabel" alignment="CENTER" style="-fx-text-fill: red;" />

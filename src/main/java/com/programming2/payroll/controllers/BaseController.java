@@ -1,10 +1,10 @@
-package com.programming2.payroll.controls;
+package com.programming2.payroll.controllers;
 
 import javafx.scene.control.TextField;
 
-interface TextNonEmptyValidator {
+abstract class BaseController {
 
-    default void setupNonEmptyValidator(TextField field) {
+    void setupNonEmptyValidator(TextField field) {
         field.textProperty().addListener((observable, oldValue, newValue) -> {
             if (field.getText() == null || field.getText().equals("")) {
                 field.getStyleClass().add("error-control");
