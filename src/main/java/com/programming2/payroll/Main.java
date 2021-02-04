@@ -24,6 +24,8 @@ public class Main extends Application {
             LoginWindowController controller = loader.getController();
             controller.setMain(this);
 
+            scene.getStylesheets().add(getClass().getResource("/application.css").toExternalForm());
+
             primaryStage.setScene(scene);
             primaryStage.setResizable(false);
             primaryStage.show();

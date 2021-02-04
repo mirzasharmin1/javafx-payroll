@@ -8,8 +8,8 @@ import javafx.scene.control.TextField;
 
 public class LoginWindowController {
 
-    @FXML TextField usernameInput;
-    @FXML PasswordField passwordInput;
+    //@FXML TextField usernameInput;
+    //@FXML PasswordField passwordInput;
     @FXML Label errorLabel;
 
     private Main main;
