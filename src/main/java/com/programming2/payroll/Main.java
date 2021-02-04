@@ -1,5 +1,6 @@
 package com.programming2.payroll;
 
+import com.programming2.payroll.controllers.EmployeesWindowController;
 import com.programming2.payroll.controllers.LoginWindowController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -16,12 +17,30 @@ public class Main extends Application {
         loginWindow();
     }
 
-    private void loginWindow() {
+    public void loginWindow() {
         try {
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("/views/LoginWindowView.fxml"));
             AnchorPane pane = loader.load();
             Scene scene = new Scene(pane);
             LoginWindowController controller = loader.getController();
+            controller.setMain(this);
+
+            scene.getStylesheets().add(getClass().getResource("/application.css").toExternalForm());
+
+            primaryStage.setScene(scene);
+            primaryStage.setResizable(false);
+            primaryStage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void employeesWindow() {
+        try {
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("/views/EmployeesWindowView.fxml"));
+            AnchorPane pane = loader.load();
+            Scene scene = new Scene(pane);
+            EmployeesWindowController controller = loader.getController();
             controller.setMain(this);
 
             scene.getStylesheets().add(getClass().getResource("/application.css").toExternalForm());

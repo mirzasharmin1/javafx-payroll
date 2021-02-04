@@ -10,7 +10,7 @@ import java.util.Map;
 public class PayrollService extends BaseService {
 
     public List<Payroll> getPayrollsForEmployee(int employeeId) {
-        String hql = "FROM Payroll WHERE Payroll.employeeId = :employeeId";
+        String hql = "FROM Payroll WHERE employeeId = :employeeId";
 
         Map<String, Object> params = new HashMap<>();
         params.put("employeeId", employeeId);

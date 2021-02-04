@@ -14,9 +14,16 @@ import java.util.Map;
 
 public class BaseService {
 
+    private static SessionFactory sessionFactory;
+
+    BaseService() {
+        if (sessionFactory == null) {
+            sessionFactory = new Configuration().configure()
+                    .buildSessionFactory();
+        }
+    }
+
     protected Session createSession() {
-        SessionFactory sessionFactory = new Configuration().configure()
-                .buildSessionFactory();
         return sessionFactory.openSession();
     }
 
@@ -75,6 +82,7 @@ public class BaseService {
                 session.getTransaction().rollback();
             }
 
+            e.printStackTrace();
             return null;
 
         } finally {

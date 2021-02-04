@@ -9,7 +9,7 @@ import java.util.Map;
 public class UserService extends BaseService {
 
     public User findUser(String username) {
-        String hql = "FROM User WHERE User.username = :username";
+        String hql = "FROM User WHERE username = :username";
 
         Map<String, Object> params = new HashMap<>();
         params.put("username", username);
@@ -26,6 +26,6 @@ public class UserService extends BaseService {
     public boolean authenticate(User user, String password) {
         if (user == null) return false;
 
-        return user.getPassword().equals(password);
+        return password.equals(user.getPassword());
     }
 }

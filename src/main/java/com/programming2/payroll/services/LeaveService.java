@@ -12,7 +12,7 @@ import java.util.Map;
 public class LeaveService extends BaseService {
 
     public List<Leave> getLeavesForEmployee(int employeeId) {
-        String hql = "FROM Leave WHERE Leave.employeeId = :employeeId";
+        String hql = "FROM Leave WHERE employeeId = :employeeId";
 
         Map<String, Object> params = new HashMap<>();
         params.put("employeeId", employeeId);
