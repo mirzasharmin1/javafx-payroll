@@ -2,8 +2,6 @@ package com.programming2.payroll.services;
 
 import com.programming2.payroll.models.Employee;
 import com.programming2.payroll.models.Leave;
-import com.programming2.payroll.models.Payroll;
-import org.hibernate.query.Query;
 
 import java.util.HashMap;
 import java.util.List;
@@ -22,5 +20,9 @@ public class LeaveService extends BaseService {
 
     public Leave getLeave(int leaveId) {
         return getById(Leave.class, leaveId);
+    }
+
+    public boolean deleteLeave(int leaveId) {
+        return deleteById(Leave.class, leaveId);
     }
 }

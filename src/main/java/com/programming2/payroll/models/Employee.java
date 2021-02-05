@@ -42,7 +42,11 @@ public class Employee extends BaseModel {
     private EmployeePosition position;
 
     @ManyToOne
-    @JoinColumn(name = "manager_id", insertable = false, updatable = false)
+    @JoinColumn(name = "departmentId", insertable = false, updatable = false)
+    private Department department;
+
+    @ManyToOne
+    @JoinColumn(name = "managerId", insertable = false, updatable = false)
     private Employee manager;
 
     @OneToMany(mappedBy = "manager")
@@ -96,6 +100,10 @@ public class Employee extends BaseModel {
 
     public EmployeePosition getPosition() {
         return position;
+    }
+
+    public Department getDepartment() {
+        return department;
     }
 
     public Employee getManager() {
@@ -172,5 +180,13 @@ public class Employee extends BaseModel {
 
     public void setLeaves(List<Leave> leaves) {
         this.leaves = leaves;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+
+    public String getName() {
+        return firstName.concat(" " + lastName);
     }
 }

@@ -143,6 +143,33 @@ public class BaseService {
         }
     }
 
+    protected <T> Boolean deleteById(Class<T> type, int id) {
+        Session session = null;
+
+        try {
+            session = createSession();
+
+            session.beginTransaction();
+
+            T data = session.get(type, id);
+            session.delete(data);
+
+            session.getTransaction().commit();
+            return true;
+
+        } catch (Exception e) {
+
+            if (session != null) {
+                session.getTransaction().rollback();
+            }
+
+            return false;
+        } finally {
+
+            closeSession(session);
+        }
+    }
+
     protected void closeSession(Session session) {
         if (session != null) {
             session.close();

@@ -33,6 +33,7 @@
         <property name="javax.persistence.sql-load-script-source">META-INF/data.sql</property>
 
         <mapping class="com.programming2.payroll.models.User"/>
+        <mapping class="com.programming2.payroll.models.Department" />
         <mapping class="com.programming2.payroll.models.Address" />
         <mapping class="com.programming2.payroll.models.Leave" />
         <mapping class="com.programming2.payroll.models.Payroll" />

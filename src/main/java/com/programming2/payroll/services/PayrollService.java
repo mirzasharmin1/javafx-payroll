@@ -1,6 +1,6 @@
 package com.programming2.payroll.services;
 
-import com.programming2.payroll.models.Leave;
+import com.programming2.payroll.models.Employee;
 import com.programming2.payroll.models.Payroll;
 
 import java.util.HashMap;
@@ -20,5 +20,9 @@ public class PayrollService extends BaseService {
 
     public Payroll getPayroll(int payrollId) {
         return getById(Payroll.class, payrollId);
+    }
+
+    public boolean deletePayroll(int payrollId) {
+        return deleteById(Payroll.class, payrollId);
     }
 }

@@ -28,7 +28,7 @@ public class Address extends BaseModel {
     private String zipCode;
 
     @OneToOne
-    @JoinColumn(name="employee_id", insertable = false, updatable = false)
+    @JoinColumn(name="employeeId", insertable = false, updatable = false)
     private Employee employee;
 
     public void setId(int id) {
