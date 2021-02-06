@@ -120,7 +120,7 @@ public class EmployeesWindowController extends BaseController implements Initial
             Hyperlink hyperlink = null;
             if (manager != null) {
                 hyperlink = new Hyperlink();
-                hyperlink.setText(employee.getName());
+                hyperlink.setText(manager.getName());
 
                 hyperlink.setOnAction(event -> navigateToUpdateEmployeeWindow(employee));
             }

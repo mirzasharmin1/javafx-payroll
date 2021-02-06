@@ -7,6 +7,7 @@ import javax.persistence.*;
 public class Address extends BaseModel {
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "addressLine1", nullable = false)
@@ -28,7 +29,7 @@ public class Address extends BaseModel {
     private String zipCode;
 
     @OneToOne
-    @JoinColumn(name="employeeId", insertable = false, updatable = false)
+    @JoinColumn(name="employeeId")
     private Employee employee;
 
     public void setId(int id) {

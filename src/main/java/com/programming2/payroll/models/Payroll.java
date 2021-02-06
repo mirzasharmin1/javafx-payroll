@@ -8,6 +8,7 @@ import java.util.Date;
 public class Payroll extends BaseModel {
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "payDate", nullable = false)
@@ -29,7 +30,7 @@ public class Payroll extends BaseModel {
     private Double deductionNotes;
 
     @ManyToOne
-    @JoinColumn(name = "employeeId", insertable = false, updatable = false)
+    @JoinColumn(name = "employeeId")
     private Employee employee;
 
     public int getId() {

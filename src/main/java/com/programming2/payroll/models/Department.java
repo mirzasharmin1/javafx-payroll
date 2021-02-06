@@ -8,6 +8,7 @@ import java.util.List;
 public class Department extends BaseModel {
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "name")

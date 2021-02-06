@@ -238,11 +238,11 @@
             </GridPane>
          </content>
       </TitledPane>
-      <Button fx:id="backButton" layoutX="42.0" layoutY="29.0" mnemonicParsing="false" onAction="#goBackToEmployeesWindow" prefHeight="27.0" prefWidth="83.0" styleClass="back-btn" text="Back" textFill="#6f6c6c" />
-      <Button fx:id="leavesButton" layoutX="789.0" layoutY="29.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="83.0" text="Leaves" />
-      <Button fx:id="payrollsButton" layoutX="698.0" layoutY="30.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="63.0" text="Payrolls" />
-      <Button fx:id="deleteButton" layoutX="475.0" layoutY="655.0" mnemonicParsing="false" styleClass="delete-btn" text="Delete" textFill="WHITE" />
-      <Button fx:id="saveButton" layoutX="360.0" layoutY="656.0" mnemonicParsing="false" styleClass="save-btn" text="Save" />
-      <Label id="errorLabel" layoutX="431.0" layoutY="613.0" textFill="#c92b2b" />
+      <Button fx:id="backButton" layoutX="22.0" layoutY="26.0" mnemonicParsing="false" onAction="#goBackToEmployeesWindow" prefHeight="27.0" prefWidth="83.0" styleClass="back-btn" text="Back" textFill="#6f6c6c" />
+      <Button fx:id="leavesButton" layoutX="789.0" layoutY="29.0" mnemonicParsing="false" onAction="#navigateToLeaves" prefHeight="27.0" prefWidth="83.0" text="Leaves" />
+      <Button fx:id="payrollsButton" layoutX="698.0" layoutY="30.0" mnemonicParsing="false" onAction="#navigateToPayrolls" prefHeight="27.0" prefWidth="63.0" text="Payrolls" />
+      <Button fx:id="deleteButton" layoutX="475.0" layoutY="655.0" mnemonicParsing="false" onAction="#deleteEmployee" styleClass="delete-btn" text="Delete" textFill="WHITE" />
+      <Button fx:id="saveButton" layoutX="360.0" layoutY="656.0" mnemonicParsing="false" onAction="#createOrUpdateEmployee" styleClass="save-btn" text="Save" />
+      <Label id="errorLabel" fx:id="errorLabel" alignment="CENTER" layoutX="261.0" layoutY="613.0" prefWidth="350.0" textFill="#c92b2b" />
    </children>
 </AnchorPane>

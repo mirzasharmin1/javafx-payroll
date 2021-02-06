@@ -8,6 +8,7 @@ import java.util.Date;
 public class Leave extends BaseModel {
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "startDate", nullable = false)
@@ -23,7 +24,7 @@ public class Leave extends BaseModel {
     private String note;
 
     @ManyToOne
-    @JoinColumn(name = "employeeId", insertable = false, updatable = false)
+    @JoinColumn(name = "employeeId")
     private Employee employee;
 
     public int getId() {

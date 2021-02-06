@@ -8,6 +8,7 @@ import java.util.List;
 @Table(name = "employee")
 public class Employee extends BaseModel {
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "firstName", nullable = false)
@@ -42,11 +43,11 @@ public class Employee extends BaseModel {
     private EmployeePosition position;
 
     @ManyToOne
-    @JoinColumn(name = "departmentId", insertable = false, updatable = false)
+    @JoinColumn(name = "departmentId")
     private Department department;
 
     @ManyToOne
-    @JoinColumn(name = "managerId", insertable = false, updatable = false)
+    @JoinColumn(name = "managerId")
     private Employee manager;
 
     @OneToMany(mappedBy = "manager")

@@ -36,7 +36,7 @@ public class BaseService {
             session = createSession();
 
             session.beginTransaction();
-            session.save(model);
+            session.saveOrUpdate(model);
             session.getTransaction().commit();
 
             return true;

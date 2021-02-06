@@ -1,6 +1,8 @@
 package com.programming2.payroll.controllers;
 
 import com.programming2.payroll.Main;
+import com.programming2.payroll.common.Utils;
+import com.programming2.payroll.models.Address;
 import com.programming2.payroll.models.Department;
 import com.programming2.payroll.models.Employee;
 import com.programming2.payroll.models.EmployeePosition;
@@ -72,6 +74,9 @@ public class EmployeeFormWindowController extends BaseController implements Init
         this.selectedEmployee = selectedEmployee;
         setInputValues();
         filterSelectedEmployees();
+
+        payrollsButton.setVisible(true);
+        leavesButton.setVisible(true);
     }
 
     @Override
@@ -88,6 +93,9 @@ public class EmployeeFormWindowController extends BaseController implements Init
         setPositionDropdownOptions();
 
         registerFieldsClearErrorOnType();
+
+        payrollsButton.setVisible(false);
+        leavesButton.setVisible(false);
     }
 
     public void fetchDepartments() {
@@ -103,7 +111,7 @@ public class EmployeeFormWindowController extends BaseController implements Init
 
     private void filterSelectedEmployees() {
         if (selectedEmployee != null) {
-            employeeObservableList.removeIf(employee -> employee.getId() == selectedEmployee.getId());
+            employeeObservableList.removeIf(employee -> employee != null && employee.getId() == selectedEmployee.getId());
         }
     }
 
@@ -117,6 +125,7 @@ public class EmployeeFormWindowController extends BaseController implements Init
     }
 
     public void setEmployeeDropdownOptions() {
+        employeeObservableList.add(0, null);
         managerComboBox.itemsProperty().set(employeeObservableList);
     }
 
@@ -260,5 +269,71 @@ public class EmployeeFormWindowController extends BaseController implements Init
                 textField.setText(newValue.replaceAll("[^\\d]", ""));
             }
         });
+    }
+
+    public void createOrUpdateEmployee() {
+        Employee employee;
+        if (selectedEmployee != null) {
+            employee = selectedEmployee;
+        } else {
+            employee = new Employee();
+        }
+
+        employee.setFirstName(firstNameTextInput.getText());
+        employee.setLastName(lastNameTextInput.getText());
+        employee.setDateOfBirth(Utils.toDate(dateOfBirthDatePicker.getValue()));
+        employee.setEmail(emailTextInput.getText());
+        employee.setPhoneNo(phoneNoTextInput.getText());
+        employee.setDateOfJoining(Utils.toDate(joiningDateDatePicker.getValue()));
+        employee.setPosition(positionComboBox.getValue());
+        employee.setManager(managerComboBox.getValue());
+        employee.setDepartment(departmentComboBox.getValue());
+        employee.setMonthlySalary(Double.parseDouble(salaryTextInput.getText()));
+        employee.setLeaveBalance(Integer.parseInt(leaveBalanceTextInput.getText()));
+
+        Address address;
+        if (employee.getAddress() == null) {
+            address = new Address();
+        } else {
+            address = employee.getAddress();
+        }
+
+        address.setAddressLine1(addressLine1TextInput.getText());
+        address.setAddressLine2(addressLine2TextInput.getText());
+        address.setCity(cityTextInput.getText());
+        address.setState(stateTextInput.getText());
+        address.setCountry(countryTextInput.getText());
+        address.setZipCode(zipcodeTextInput.getText());
+
+        employee.setAddress(address);
+
+        if (employeeService.createOrUpdateModel(employee)) {
+            main.employeesWindow();
+        } else {
+            errorLabel.setText("Could not save employee data, please check your inputs.");
+        }
+    }
+
+    public void deleteEmployee() {
+        if (selectedEmployee != null) {
+            boolean result = employeeService.deleteEmployee(selectedEmployee.getId());
+            if (result) {
+                main.employeesWindow();
+            } else {
+                errorLabel.setText("Could not delete employee.");
+            }
+        }
+    }
+
+    public void navigateToPayrolls() {
+        if (selectedEmployee != null) {
+            main.payrollsWindow(selectedEmployee);
+        }
+    }
+
+    public void navigateToLeaves() {
+        if (selectedEmployee != null) {
+            main.leavesWindow(selectedEmployee);
+        }
     }
 }
