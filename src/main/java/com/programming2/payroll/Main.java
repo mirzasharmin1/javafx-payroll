@@ -1,7 +1,9 @@
 package com.programming2.payroll;
 
+import com.programming2.payroll.controllers.EmployeeFormWindowController;
 import com.programming2.payroll.controllers.EmployeesWindowController;
 import com.programming2.payroll.controllers.LoginWindowController;
+import com.programming2.payroll.models.Employee;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -42,6 +44,45 @@ public class Main extends Application {
             Scene scene = new Scene(pane);
             EmployeesWindowController controller = loader.getController();
             controller.setMain(this);
+
+            scene.getStylesheets().add(getClass().getResource("/application.css").toExternalForm());
+
+            primaryStage.setScene(scene);
+            primaryStage.setResizable(false);
+            primaryStage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void createEmployeeWindow() {
+        try {
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("/views/EmployeeFormWindowView.fxml"));
+            AnchorPane pane = loader.load();
+            Scene scene = new Scene(pane);
+            EmployeeFormWindowController controller = loader.getController();
+            controller.setMain(this);
+
+            scene.getStylesheets().add(getClass().getResource("/application.css").toExternalForm());
+
+            primaryStage.setScene(scene);
+            primaryStage.setResizable(false);
+            primaryStage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updateEmployeeWindow(Employee selectedEmployee) {
+        try {
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("/views/EmployeeFormWindowView.fxml"));
+            AnchorPane pane = loader.load();
+            Scene scene = new Scene(pane);
+            EmployeeFormWindowController controller = loader.getController();
+
+            controller.setMain(this);
+
+            controller.setSelectedEmployee(selectedEmployee);
 
             scene.getStylesheets().add(getClass().getResource("/application.css").toExternalForm());
 

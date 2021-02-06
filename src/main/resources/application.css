@@ -1,3 +1,27 @@
 .error-control {
     -fx-border-color: red;
 }
+
+.page-header {
+    -fx-font-size: 22;
+}
+
+.back-btn {
+    -fx-background-color: yellow;
+}
+
+.save-btn {
+    -fx-background-color: #03fc17;
+}
+
+.delete-btn {
+    -fx-background-color: red;
+}
+
+.employee-field-label {
+    -fx-pref-width: 85;
+}
+
+.employee-field {
+    -fx-pref-width: 170;
+}

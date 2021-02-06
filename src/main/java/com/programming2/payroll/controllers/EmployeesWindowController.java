@@ -121,6 +121,8 @@ public class EmployeesWindowController extends BaseController implements Initial
             if (manager != null) {
                 hyperlink = new Hyperlink();
                 hyperlink.setText(employee.getName());
+
+                hyperlink.setOnAction(event -> navigateToUpdateEmployeeWindow(employee));
             }
             return new ReadOnlyObjectWrapper<>(hyperlink);
         });
@@ -129,6 +131,8 @@ public class EmployeesWindowController extends BaseController implements Initial
 
             Hyperlink hyperlink = new Hyperlink();
             hyperlink.setText("Update");
+
+            hyperlink.setOnAction(event -> navigateToUpdateEmployeeWindow(employee));
 
             return new ReadOnlyObjectWrapper<>(hyperlink);
         });
@@ -189,5 +193,13 @@ public class EmployeesWindowController extends BaseController implements Initial
                 ).findFirst().orElse(null);
             }
         });
+    }
+
+    public void navigateToCreateEmployeeWindow() {
+        main.createEmployeeWindow();
+    }
+
+    private void navigateToUpdateEmployeeWindow(Employee selectedEmployee) {
+        main.updateEmployeeWindow(selectedEmployee);
     }
 }

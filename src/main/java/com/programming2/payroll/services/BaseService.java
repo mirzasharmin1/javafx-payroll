@@ -27,7 +27,7 @@ public class BaseService {
         return sessionFactory.openSession();
     }
 
-    public boolean createModel(BaseModel model) {
+    public boolean createOrUpdateModel(BaseModel model) {
         if (model == null) return false;
 
         Session session = null;
