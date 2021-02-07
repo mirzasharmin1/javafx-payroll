@@ -51,5 +51,6 @@
          </children>
       </GridPane>
       <Button layoutX="423.0" layoutY="628.0" mnemonicParsing="false" onAction="#saveLeave" styleClass="save-btn" text="Save" />
+      <Label fx:id="errorLabel" alignment="CENTER" layoutX="296.0" layoutY="580.0" prefWidth="300.0" textFill="#f25d5d" />
    </children>
 </AnchorPane>

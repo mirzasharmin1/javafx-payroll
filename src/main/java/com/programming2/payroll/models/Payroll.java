@@ -27,7 +27,7 @@ public class Payroll extends BaseModel {
     private Double deduction;
 
     @Column(name = "deductionNotes")
-    private Double deductionNotes;
+    private String deductionNotes;
 
     @ManyToOne
     @JoinColumn(name = "employeeId")
@@ -57,7 +57,7 @@ public class Payroll extends BaseModel {
         return deduction;
     }
 
-    public Double getDeductionNotes() {
+    public String getDeductionNotes() {
         return deductionNotes;
     }
 
@@ -89,7 +89,7 @@ public class Payroll extends BaseModel {
         this.deduction = deduction;
     }
 
-    public void setDeductionNotes(Double deductionNotes) {
+    public void setDeductionNotes(String deductionNotes) {
         this.deductionNotes = deductionNotes;
     }
 

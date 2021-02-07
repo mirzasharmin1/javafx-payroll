@@ -6,6 +6,7 @@ import com.programming2.payroll.models.Address;
 import com.programming2.payroll.models.Department;
 import com.programming2.payroll.models.Employee;
 import com.programming2.payroll.models.EmployeePosition;
+import com.programming2.payroll.services.AddressService;
 import com.programming2.payroll.services.DepartmentService;
 import com.programming2.payroll.services.EmployeeService;
 import javafx.collections.FXCollections;
@@ -28,6 +29,7 @@ public class EmployeeFormWindowController extends BaseController implements Init
 
     private final DepartmentService departmentService;
     private final EmployeeService employeeService;
+    private final AddressService addressService;
 
     ObservableList<Department> departmentObservableList;
     ObservableList<Employee> employeeObservableList;
@@ -60,6 +62,7 @@ public class EmployeeFormWindowController extends BaseController implements Init
     public EmployeeFormWindowController() {
         departmentService = new DepartmentService();
         employeeService = new EmployeeService();
+        addressService = new AddressService();
 
         fetchDepartments();
         fetchEmployees();
@@ -77,6 +80,7 @@ public class EmployeeFormWindowController extends BaseController implements Init
 
         payrollsButton.setVisible(true);
         leavesButton.setVisible(true);
+        deleteButton.setVisible(true);
     }
 
     @Override
@@ -96,6 +100,7 @@ public class EmployeeFormWindowController extends BaseController implements Init
 
         payrollsButton.setVisible(false);
         leavesButton.setVisible(false);
+        deleteButton.setVisible(false);
     }
 
     public void fetchDepartments() {
@@ -283,6 +288,16 @@ public class EmployeeFormWindowController extends BaseController implements Init
         employee.setMonthlySalary(Double.parseDouble(salaryTextInput.getText()));
         employee.setLeaveBalance(Integer.parseInt(leaveBalanceTextInput.getText()));
 
+        if (employeeService.createOrUpdateModel(employee)) {
+            if (createAndAttachAddress(employee)) {
+                main.employeesWindow();
+            }
+        } else {
+            errorLabel.setText("Could not save employee data, please check your inputs.");
+        }
+    }
+
+    private boolean createAndAttachAddress(Employee employee) {
         Address address;
         if (employee.getAddress() == null) {
             address = new Address();
@@ -296,14 +311,9 @@ public class EmployeeFormWindowController extends BaseController implements Init
         address.setState(stateTextInput.getText());
         address.setCountry(countryTextInput.getText());
         address.setZipCode(zipcodeTextInput.getText());
+        address.setEmployee(employee);
 
-        employee.setAddress(address);
-
-        if (employeeService.createOrUpdateEmployee(employee)) {
-            main.employeesWindow();
-        } else {
-            errorLabel.setText("Could not save employee data, please check your inputs.");
-        }
+        return addressService.createOrUpdateModel(address);
     }
 
     public void deleteEmployee() {

@@ -65,6 +65,7 @@
          </children>
       </GridPane>
       <Button layoutX="353.0" layoutY="626.0" mnemonicParsing="false" onAction="#savePayroll" styleClass="save-btn" text="Save" />
-      <Button layoutX="525.0" layoutY="626.0" mnemonicParsing="false" onAction="#deletePayroll" styleClass="delete-btn" text="Delete" textFill="#f8f4f4" />
+      <Button fx:id="deleteButton" layoutX="525.0" layoutY="626.0" mnemonicParsing="false" onAction="#deletePayroll" styleClass="delete-btn" text="Delete" textFill="#f8f4f4" />
+      <Label fx:id="errorLabel" alignment="CENTER" contentDisplay="TOP" layoutX="366.0" layoutY="571.0" prefWidth="200.0" textFill="#eb2424" />
     </children>
 </AnchorPane>
