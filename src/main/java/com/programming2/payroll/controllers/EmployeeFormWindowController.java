@@ -85,8 +85,8 @@ public class EmployeeFormWindowController extends BaseController implements Init
         setEmployeeComboBoxConverter();
         setPositionComboBoxConverter();
 
-        setNumericFieldValidators(salaryTextInput);
-        setNumericFieldValidators(leaveBalanceTextInput);
+        Utils.setNumericFieldValidators(salaryTextInput);
+        Utils.setNumericFieldValidators(leaveBalanceTextInput);
 
         setDepartmentDropdownOptions();
         setEmployeeDropdownOptions();
@@ -263,14 +263,6 @@ public class EmployeeFormWindowController extends BaseController implements Init
         }
     }
 
-    public void setNumericFieldValidators(TextField textField) {
-        textField.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (!newValue.matches("\\d*")) {
-                textField.setText(newValue.replaceAll("[^\\d]", ""));
-            }
-        });
-    }
-
     public void createOrUpdateEmployee() {
         Employee employee;
         if (selectedEmployee != null) {
@@ -307,7 +299,7 @@ public class EmployeeFormWindowController extends BaseController implements Init
 
         employee.setAddress(address);
 
-        if (employeeService.createOrUpdateModel(employee)) {
+        if (employeeService.createOrUpdateEmployee(employee)) {
             main.employeesWindow();
         } else {
             errorLabel.setText("Could not save employee data, please check your inputs.");

@@ -14,6 +14,20 @@ public class EmployeeService extends BaseService {
         return getRecords(Employee.class, hql, new HashMap<>());
     }
 
+    public boolean createOrUpdateEmployee(Employee model) {
+
+        boolean successful = true;
+        if (model.getAddress() != null) {
+            successful = createOrUpdateModel(model.getAddress());
+        }
+
+        if (successful) {
+            successful = createOrUpdateModel(model);
+        }
+
+        return successful;
+    }
+
     public Employee getEmployee(int employeeId) {
         return getById(Employee.class, employeeId);
     }

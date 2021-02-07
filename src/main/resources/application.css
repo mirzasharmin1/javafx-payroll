@@ -25,3 +25,11 @@
 .employee-field {
     -fx-pref-width: 170;
 }
+
+.two-column-field {
+    -fx-pref-width: 220;
+}
+
+.two-column-field-label {
+    -fx-pref-width: 110;
+}
